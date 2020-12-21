@@ -16,8 +16,8 @@ def extract_job(html):
   # https://lets-hack.tech/programming/languages/python/bs4-text-or-string/
   title = html.find("h2").find("a", {"class":"s-link"})["title"].strip()
   company_span, location_span = html.find("h3").find_all("span", recursive=False)
-  company = company_span.text.strip().replace("\n", " ").replace("\r", " ")
-  location = location_span.text.strip().replace("\n", " ").replace("\r", " ")
+  company = company_span.get_text(strip=True).replace("\n", " ").replace("\r", " ")
+  location = location_span.get_text(strip=True).replace("\n", " ").replace("\r", " ")
   job_id = html["data-jobid"].strip()
   
   # print(f"company: {company}")

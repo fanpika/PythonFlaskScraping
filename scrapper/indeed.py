@@ -17,7 +17,7 @@ def get_last_page(url):
 def extract_job(html):
   # https://lets-hack.tech/programming/languages/python/bs4-text-or-string/
   title = html.find("h2", {"class":"title"}).find("a")["title"].strip()
-  company = html.find("span", {"class":"company"}).text.strip().replace("\r", " ")
+  company = html.find("span", {"class":"company"}).get_text(strip=True).replace("\r", " ")
   location = html.find("div", {"class":"recJobLoc"})["data-rc-loc"].strip()
   job_id = html["data-jk"].strip()
 
